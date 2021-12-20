@@ -58,6 +58,7 @@ val licenseReportDependencies by configurations.creating {
 dependencies {
   bootstrapLibs(project(":instrumentation-api"))
   bootstrapLibs(project(":instrumentation-api-annotation-support"))
+  bootstrapLibs(project(":instrumentation-api-appender"))
   bootstrapLibs(project(":javaagent-bootstrap"))
   bootstrapLibs(project(":javaagent-instrumentation-api"))
   bootstrapLibs("org.slf4j:slf4j-simple")
@@ -93,6 +94,9 @@ dependencies {
   testCompileOnly(project(":javaagent-instrumentation-api"))
 
   testImplementation("com.google.guava:guava")
+  testImplementation("io.opentelemetry:opentelemetry-sdk")
+  // TODO(anuraaga): Remove after github.com/open-telemetry/opentelemetry-java/issues/3999
+  testImplementation("io.opentelemetry:opentelemetry-sdk-metrics")
   testImplementation("io.opentracing.contrib.dropwizard:dropwizard-opentracing:0.2.2")
 }
 
@@ -291,6 +295,7 @@ fun ShadowJar.excludeBootstrapJars() {
   dependencies {
     exclude(project(":instrumentation-api"))
     exclude(project(":instrumentation-api-annotation-support"))
+    exclude(project(":instrumentation-api-appender"))
     exclude(project(":javaagent-bootstrap"))
     exclude(project(":javaagent-instrumentation-api"))
   }

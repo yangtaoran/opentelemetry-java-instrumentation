@@ -1,5 +1,4 @@
 plugins {
-  `java-gradle-plugin`
   `kotlin-dsl`
   // When updating, update below in dependencies too
   id("com.diffplug.spotless") version "5.16.0"
@@ -29,8 +28,7 @@ dependencies {
   implementation(gradleApi())
   implementation(localGroovy())
 
-  implementation("io.opentelemetry.instrumentation.muzzle-generation:io.opentelemetry.instrumentation.muzzle-generation.gradle.plugin")
-  implementation("io.opentelemetry.instrumentation.muzzle-check:io.opentelemetry.instrumentation.muzzle-check.gradle.plugin")
+  implementation("io.opentelemetry.instrumentation:gradle-plugins:1.9.1-alpha")
 
   implementation("org.eclipse.aether:aether-connector-basic:1.1.0")
   implementation("org.eclipse.aether:aether-transport-http:1.1.0")
@@ -47,7 +45,7 @@ dependencies {
   implementation("org.gradle:test-retry-gradle-plugin:1.3.1")
   implementation("ru.vyarus:gradle-animalsniffer-plugin:1.5.4")
   // When updating, also update dependencyManagement/build.gradle.kts
-  implementation("net.bytebuddy:byte-buddy-gradle-plugin:1.11.22")
+  implementation("net.bytebuddy:byte-buddy-gradle-plugin:1.12.3")
   implementation("gradle.plugin.io.morethan.jmhreport:gradle-jmh-report:0.9.0")
   implementation("me.champeau.jmh:jmh-gradle-plugin:0.6.6")
   implementation("net.ltgt.gradle:gradle-errorprone-plugin:2.0.2")
